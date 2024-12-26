@@ -9,17 +9,24 @@
   --border-width: 2px;
   --border-transition: 0.2s ease;
   
-  /* Color system */
+  /* Background colors */
   --bg-0: oklch(19% 0 0);
   --bg-1: oklch(23% 0 0);
   --bg-2: oklch(27% 0 0);
+  --bg-3: oklch(31% 0 0);
+
+  /* Interactive states */
+  --hover: oklch(54% 0 0 / 0.1);
+  --active: oklch(54% 0 0 / 0.2);
+  --selected: var(--active);
+
+  /* Text colors */
+  --txt-dark: var(--bg-0);
   --txt-0: oklch(90% 0 0);
   --txt-1: oklch(80% 0 0);
   --txt-2: oklch(60% 0 0);
   --txt-3: oklch(40% 0 0);
-  --hover: oklch(54% 0 0 / 0.1);
-  --active: oklch(54% 0 0 / 0.2);
-  
+
   /* Accent colors */
   --pink: oklch(73% 0.12 0);
   --purple: oklch(73% 0.12 300);
@@ -28,29 +35,16 @@
   --green: oklch(73% 0.12 160);
 }
 
-body {
-  font-family: var(--font-primary);
-  background: var(--bg-0);
-  color: var(--txt-1);
-  margin: 0;
-}
-
 [class^='sidebar_'],
-[class^='chatContent_'],
-.container {
+[class^='chatContent_'] {
   background: var(--bg-1);
   border: var(--border-width) solid var(--bg-2);
   border-radius: var(--panel-roundness);
   padding: var(--pad);
   transition: border-color var(--border-transition);
-  box-sizing: border-box;
 }
 
-[class^='sidebar_']:hover,
-[class^='chatContent_']:hover {
-  border-color: var(--hover);
-}
-
+/* Rest of the optimized CSS remains the same */
 button,
 [class^='button_'] {
   background: var(--bg-2);
@@ -74,3 +68,9 @@ button:active,
 
 input::placeholder { color: var(--txt-3); }
 input:focus { border-color: var(--active); }
+
+.container {
+  margin: var(--pad);
+  padding: var(--pad);
+  box-sizing: border-box;
+}
