@@ -3,57 +3,47 @@
 
 :root {
   --font-primary: 'DM Mono', 'gg mono', monospace;
-  --font-display: var(--font-primary);
-  --font-code: var(--font-primary);
-
   --pad: 16px;
   --txt-pad: 10px;
-
   --panel-roundness: 0;
   --border-width: 2px;
   --border-transition: 0.2s ease;
-
+  
+  /* Color system */
   --bg-0: oklch(19% 0 0);
   --bg-1: oklch(23% 0 0);
   --bg-2: oklch(27% 0 0);
-  --bg-3: oklch(31% 0 0);
-
-  --hover: oklch(54% 0 0 / 0.1);
-  --active: oklch(54% 0 0 / 0.2);
-  --selected: var(--active);
-
-  --txt-dark: var(--bg-0);
   --txt-0: oklch(90% 0 0);
   --txt-1: oklch(80% 0 0);
   --txt-2: oklch(60% 0 0);
   --txt-3: oklch(40% 0 0);
-
+  --hover: oklch(54% 0 0 / 0.1);
+  --active: oklch(54% 0 0 / 0.2);
+  
+  /* Accent colors */
   --pink: oklch(73% 0.12 0);
   --purple: oklch(73% 0.12 300);
   --cyan: oklch(73% 0.12 200);
   --yellow: oklch(78% 0.12 80);
   --green: oklch(73% 0.12 160);
-
-  --corner-text: 'system24';
 }
-
 
 body {
   font-family: var(--font-primary);
-  background-color: var(--bg-0);
+  background: var(--bg-0);
   color: var(--txt-1);
   margin: 0;
-  letter-spacing: -0.05ch;
-  font-weight: 300;
 }
 
 [class^='sidebar_'],
-[class^='chatContent_'] {
-  background-color: var(--bg-1);
-  border-radius: var(--panel-roundness);
+[class^='chatContent_'],
+.container {
+  background: var(--bg-1);
   border: var(--border-width) solid var(--bg-2);
+  border-radius: var(--panel-roundness);
+  padding: var(--pad);
   transition: border-color var(--border-transition);
-  letter-spacing: inherit;
+  box-sizing: border-box;
 }
 
 [class^='sidebar_']:hover,
@@ -61,61 +51,26 @@ body {
   border-color: var(--hover);
 }
 
-button {
-  background-color: var(--bg-2);
+button,
+[class^='button_'] {
+  background: var(--bg-2);
   color: var(--txt-1);
-  border: none;
   padding: var(--txt-pad);
+  border: 0;
   border-radius: var(--panel-roundness);
-  font-family: var(--font-code);
-  letter-spacing: inherit;
-  transition: background-color var(--border-transition);
+  cursor: pointer;
+  transition: filter var(--border-transition);
 }
 
-button:hover {
-  background-color: var(--hover);
+button:hover,
+[class^='button_']:hover {
+  filter: brightness(1.1);
 }
 
-
-[class^='sidebar_']:after,
-.container_fc4f04:after {
-  content: 'channel';
-  display: block;
-  color: var(--txt-3);
-  font-weight: 500;
-  position: absolute;
-  top: -10px;
-  left: 8px;
-  background-color: var(--bg-0);
-  padding: 0 4px;
-  z-index: 100;
-  transition: color var(--border-transition);
+button:active,
+[class^='button_']:active {
+  filter: brightness(0.9);
 }
 
-.guilds_a4d4d9:after {
-  content: 'nav';
-  display: block;
-  color: var(--txt-3);
-  font-weight: 500;
-  position: absolute;
-  top: -10px;
-  left: 8px;
-  background-color: var(--bg-0);
-  padding: 0 4px;
-  z-index: 100;
-  transition: color var(--border-transition);
-}
-
-.wordmarkWindows_a934d8:after {
-  content: var(--corner-text);
-  display: block;
-  position: relative;
-  color: var(--txt-2);
-  margin-left: 6px;
-  width: 100px;
-  height: 12px;
-  font-family: var(--font-primary);
-  font-size: 16px;
-  font-weight: 500;
-  white-space: nowrap;
-}
+input::placeholder { color: var(--txt-3); }
+input:focus { border-color: var(--active); }
