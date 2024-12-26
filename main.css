@@ -33,23 +33,27 @@
   --cyan: oklch(73% 0.12 200);
   --yellow: oklch(78% 0.12 80);
   --green: oklch(73% 0.12 160);
+
+  --corner-text: 'system24';
 }
 
-/* Simplify base element resets */
+
 body {
   font-family: var(--font-primary);
   background-color: var(--bg-0);
   color: var(--txt-1);
   margin: 0;
+  letter-spacing: -0.05ch;
+  font-weight: 300;
 }
 
-/* Optimize broad selectors */
 [class^='sidebar_'],
 [class^='chatContent_'] {
   background-color: var(--bg-1);
   border-radius: var(--panel-roundness);
   border: var(--border-width) solid var(--bg-2);
   transition: border-color var(--border-transition);
+  letter-spacing: inherit;
 }
 
 [class^='sidebar_']:hover,
@@ -57,13 +61,14 @@ body {
   border-color: var(--hover);
 }
 
-/* Reduce nesting */
 button {
   background-color: var(--bg-2);
   color: var(--txt-1);
   border: none;
   padding: var(--txt-pad);
   border-radius: var(--panel-roundness);
+  font-family: var(--font-code);
+  letter-spacing: inherit;
   transition: background-color var(--border-transition);
 }
 
@@ -71,39 +76,46 @@ button:hover {
   background-color: var(--hover);
 }
 
-/* Simplify margins and padding */
-.container {
-  margin: var(--pad);
-  padding: var(--pad);
-  box-sizing: border-box;
-}
 
-/* Focus pseudo-selectors */
-input::placeholder {
+[class^='sidebar_']:after,
+.container_fc4f04:after {
+  content: 'channel';
+  display: block;
   color: var(--txt-3);
+  font-weight: 500;
+  position: absolute;
+  top: -10px;
+  left: 8px;
+  background-color: var(--bg-0);
+  padding: 0 4px;
+  z-index: 100;
+  transition: color var(--border-transition);
 }
 
-input:focus {
-  border-color: var(--active);
+.guilds_a4d4d9:after {
+  content: 'nav';
+  display: block;
+  color: var(--txt-3);
+  font-weight: 500;
+  position: absolute;
+  top: -10px;
+  left: 8px;
+  background-color: var(--bg-0);
+  padding: 0 4px;
+  z-index: 100;
+  transition: color var(--border-transition);
 }
 
-/* Remove unnecessary properties */
-:root {
-  --unused-variable: initial;
-}
-
-/* Consolidate hover and active effects */
-[class^='button_'],
-button {
-  cursor: pointer;
-}
-
-[class^='button_']:hover,
-button:hover {
-  filter: brightness(1.1);
-}
-
-[class^='button_']:active,
-button:active {
-  filter: brightness(0.9);
+.wordmarkWindows_a934d8:after {
+  content: var(--corner-text);
+  display: block;
+  position: relative;
+  color: var(--txt-2);
+  margin-left: 6px;
+  width: 100px;
+  height: 12px;
+  font-family: var(--font-primary);
+  font-size: 16px;
+  font-weight: 500;
+  white-space: nowrap;
 }
